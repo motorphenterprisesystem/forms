@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BIR Form 1701-MS - Annual Income Tax Return</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background: #ddd;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px 0;
+  }
+  .page {
+    width: 216mm;
+    min-height: 279mm;
+    margin: 0 auto 20px auto;
+    padding: 8mm 9mm;
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    font-size: 8px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { border: none; margin: 0; width: auto; min-height: 0; page-break-after: always; }
+    .no-print { display: none; }
+  }
+  .grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .cell { border: 1px solid #000; padding: 2px 4px; font-size: 8px; vertical-align: top; }
+  .label { display: block; font-size: 6.3px; color: #333; margin-bottom: 1px; }
+  .section-title {
+    background: #e6e6e6; border: 1px solid #000; border-bottom: none;
+    padding: 2px 6px; font-size: 9.5px; font-weight: 700; margin-top: 6px;
+  }
+  .shaded { background: #dcdcdc; }
+  .center { text-align: center; }
+  .bold { font-weight: 700; }
+  .italic { font-style: italic; }
+
+  input[type=text], input[type=email], textarea {
+    border: none; border-bottom: 1px solid #999; font-size: 8px; font-family: inherit;
+    width: 100%; padding: 1px 2px; background: transparent;
+  }
+  input[type=text]:focus, textarea:focus { outline: 1px solid #6699cc; background: #f5faff; }
+  textarea { resize: vertical; }
+
+  /* comb-box: one bordered cell per character, BIR style */
+  .comb { display: inline-flex; align-items: center; white-space: nowrap; }
+  .comb-cell {
+    width: 10px; height: 13px; text-align: center; font-size: 7.5px;
+    font-family: Consolas, monospace; border: 1px solid #000; padding: 0;
+    margin: 0 1px 0 0; box-sizing: border-box;
+  }
+  .comb-cell:last-child { margin-right: 0; }
+  .comb-sep { margin: 0 3px; font-weight: 700; font-size: 9px; }
+  .amt { display: inline-flex; align-items: center; white-space: nowrap; }
+  .amt-dot { margin: 0 2px; font-weight: 700; font-size: 9px; }
+  .pct-cell { width: 24px; height: 13px; text-align: center; font-size: 7.5px; border: 1px solid #000; }
+
+  /* checkbox styled as a square box with X */
+  input[type=checkbox].sq {
+    appearance: none; -webkit-appearance: none; margin: 0 3px 0 0;
+    width: 9px; height: 9px; border: 1px solid #000; position: relative;
+    vertical-align: middle; cursor: pointer; background: #fff; flex: 0 0 auto;
+  }
+  input[type=checkbox].sq:checked::after {
+    content: "X"; position: absolute; top: -3.5px; left: 0.5px;
+    font-size: 8.5px; font-weight: 700; line-height: 9px;
+  }
+  .chk { display: inline-flex; align-items: center; margin-right: 10px; font-size: 7.5px; vertical-align: middle; }
+
+  .top-strip { display: flex; justify-content: space-between; align-items: flex-start; }
+  .bir-box { border: 1px solid #000; padding: 2px 5px; font-size: 6px; width: 95px; }
+  .bir-title { text-align: center; flex: 1; font-size: 8px; }
+  .form-box { border: 1px solid #000; padding: 3px 6px; width: 110px; text-align: center; }
+  .form-no { font-size: 15px; font-weight: 700; }
+  .main-title { text-align: center; flex: 1; }
+  .main-title h1 { font-size: 15px; margin: 2px 0; }
+  .main-title h2 { font-size: 11px; margin: 0 0 3px 0; font-weight: 700; }
+  .code-box { border: 1px solid #000; padding: 3px 6px; width: 110px; text-align: center; font-size: 6.5px; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page" id="page1">
+
+  <div class="top-strip">
+    <div class="bir-box">For BIR<br>Use Only <span style="float:right">BCS/<br>Item:</span></div>
+    <div class="bir-title">
+      Republic of the Philippines<br>Department of Finance<br>Bureau of Internal Revenue
+    </div>
+    <div class="bir-box">&nbsp;</div>
+  </div>
+
+  <div class="top-strip" style="margin-top:4px; align-items:stretch;">
+    <div class="form-box">
+      <div style="font-size:7px;">BIR Form No.</div>
+      <div class="form-no">1701-MS</div>
+      <div style="font-size:6.5px;">August 2024</div>
+      <div style="font-size:6.5px;">Page 1</div>
+    </div>
+    <div class="main-title">
+      <h1>Annual Income Tax Return</h1>
+      <h2>For Individuals Classified as MICRO or SMALL Taxpayers</h2>
+      <div style="font-size:6.5px;">Enter all required information in <b>CAPITAL LETTERS</b> using <b>BLACK ink</b>. Mark applicable boxes with an "X".</div>
+    </div>
+    <div class="code-box">
+      <div style="font-size:14px; letter-spacing:1px;">||||||||||||</div>
+      1701-MS 08/24 P1
+    </div>
+  </div>
+
+  <table class="grid" style="margin-top:4px;">
+    <tr>
+      <td class="cell" style="width:24%;">
+        <span class="label">1 For the Year (MM/YYYY)</span>
+        <span class="comb" data-len="6" data-groups="2,4"></span>
+      </td>
+      <td class="cell" style="width:20%;">
+        <span class="label">2 Amended Return?</span>
+        <label class="chk"><input type="checkbox" class="sq">Yes</label>
+        <label class="chk"><input type="checkbox" class="sq">No</label>
+      </td>
+      <td class="cell" style="width:24%;">
+        <span class="label">3 Short Period Return?</span>
+        <label class="chk"><input type="checkbox" class="sq">Yes</label>
+        <label class="chk"><input type="checkbox" class="sq">No</label>
+      </td>
+      <td class="cell" style="width:16%;">
+        <span class="label">4 Civil Status</span>
+        <input type="text">
+      </td>
+      <td class="cell" style="width:16%;">
+        <span class="label">5 If married, you are filing</span>
+        <label class="chk"><input type="checkbox" class="sq">Jointly</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Separately</label><br>
+        <label class="chk"><input type="checkbox" class="sq">N/A, spouse has no income</label>
+      </td>
+    </tr>
+  </table>
+
+  <div class="section-title center">PART I &ndash; Taxpayer/Filer and Spouse Information</div>
+  <table class="grid">
+    <tr>
+      <td class="cell shaded bold center" style="width:26%;">Particulars</td>
+      <td class="cell shaded bold center" style="width:37%;">A. Taxpayer/Filer</td>
+      <td class="cell shaded bold center" style="width:37%;">B. Spouse</td>
+    </tr>
+    <tr>
+      <td class="cell">6 Taxpayer Identification Number (TIN)</td>
+      <td class="cell"><span class="comb" data-len="9" data-groups="3,3,3"></span></td>
+      <td class="cell"><span class="comb" data-len="9" data-groups="3,3,3"></span></td>
+    </tr>
+    <tr>
+      <td class="cell">7 RDO Code</td>
+      <td class="cell"><span class="comb" data-len="3"></span></td>
+      <td class="cell"><span class="comb" data-len="3"></span></td>
+    </tr>
+    <tr>
+      <td class="cell">8 Taxpayer's Name <span class="italic">(Last, First, Suffix, Middle) / ESTATE OF / TRUST FAO</span></td>
+      <td class="cell"><input type="text"></td>
+      <td class="cell"><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="cell">9 Email Address</td>
+      <td class="cell"><input type="email"></td>
+      <td class="cell"><input type="email"></td>
+    </tr>
+    <tr>
+      <td class="cell">10 Contact Number (Landline/Cellphone No.)</td>
+      <td class="cell"><input type="text"></td>
+      <td class="cell"><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="cell">11 Source of Income</td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Income from Business</label>
+        <label class="chk"><input type="checkbox" class="sq">Mixed Income</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Income from Profession</label>
+      </td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Income from Business</label>
+        <label class="chk"><input type="checkbox" class="sq">Mixed Income</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Income from Profession</label>
+        <label class="chk"><input type="checkbox" class="sq">Compensation Income</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell">12 Income is subject to <span class="italic">(if 2+ activities/regimes, use BIR Form 1701)</span></td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Graduated Income Tax Rates</label>
+        <label class="chk"><input type="checkbox" class="sq">8% Income Tax Rate</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Exempt from Income Tax (IT)</label>
+        <label class="chk"><input type="checkbox" class="sq">Special/Preferential Rate</label>
+      </td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Graduated Income Tax Rates</label>
+        <label class="chk"><input type="checkbox" class="sq">8% Income Tax Rate</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Exempt from Income Tax (IT)</label>
+        <label class="chk"><input type="checkbox" class="sq">Special/Preferential Rate</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell">13 Legal Basis of Tax Relief/Exemption <span class="italic">(Specify)</span></td>
+      <td class="cell"><input type="text"></td>
+      <td class="cell"><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="cell">14 Investment Promotion Agency (IPA)/Government Agency <span class="italic">(Specify)</span></td>
+      <td class="cell"><input type="text"></td>
+      <td class="cell"><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="cell">15 Registered Activity/Program <span class="italic">(Registration Number)</span></td>
+      <td class="cell"><input type="text"></td>
+      <td class="cell"><input type="text"></td>
+    </tr>
+    <tr>
+      <td class="cell">16 Effectivity Date of Tax Relief/Exemption <span class="italic">(MM/DD/YYYY)</span></td>
+      <td class="cell">
+        <span class="label">From</span><span class="comb" data-len="8" data-groups="2,2,4"></span>
+        &nbsp;&nbsp;<span class="label" style="display:inline;">To</span><span class="comb" data-len="8" data-groups="2,2,4"></span>
+      </td>
+      <td class="cell">
+        <span class="label">From</span><span class="comb" data-len="8" data-groups="2,2,4"></span>
+        &nbsp;&nbsp;<span class="label" style="display:inline;">To</span><span class="comb" data-len="8" data-groups="2,2,4"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell">17 Method of Deduction</td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Itemized Deduction [Sec. 34(A-J), NIRC]</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Optional Standard Deduction (OSD) [40% of Gross Sales/Revenues/Fees, Sec. 34(K)]</label>
+      </td>
+      <td class="cell">
+        <label class="chk"><input type="checkbox" class="sq">Itemized Deduction [Sec. 34(A-J), NIRC]</label><br>
+        <label class="chk"><input type="checkbox" class="sq">Optional Standard Deduction (OSD) [40% of Gross Sales/Revenues/Fees, Sec. 34(K)]</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell">18 Alphanumeric Tax Code (ATC) <span class="italic">(see Table 1)</span></td>
+      <td class="cell"><span class="comb" data-len="5"></span></td>
+      <td class="cell"><span class="comb" data-len="5"></span></td>
+    </tr>
+  </table>
+
+  <div class="section-title">PART II &ndash; Total Income Tax Payable
+    <span style="float:right; font-weight:400; font-style:italic; font-size:7px;">(DO NOT enter Centavos; 49 or less drop down; 50 or more round up)</span>
+  </div>
+  <table class="grid">
+    <tr>
+      <td class="cell shaded bold" style="width:60%;">Particulars</td>
+      <td class="cell shaded bold center" style="width:20%;">A. Taxpayer/Filer</td>
+      <td class="cell shaded bold center" style="width:20%;">B. Spouse</td>
+    </tr>
+    <tr><td class="cell">19 Income Tax Due &ndash; Special/Preferential Rate <span class="italic">(From Part IV Item 18A)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">20 Less: Share of Other Government Agency, if remitted directly to the Agency</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">21 Net Income Tax Due/Share of National Gov't. &ndash; Special/Preferential Rate <span class="italic">(19 less 20)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">22 Income Tax Due - Regular Rate <span class="italic">(From Part IV Item 18B OR Item 25)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">23 Total Income Tax Due <span class="italic">(Sum of Items 21 and 22)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">24 Less: Total Tax Credits/Payments <span class="italic">(From Part V Item 10)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">25 Tax Payable/(Overpayment) <span class="italic">(23 less 24)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">26 Less: Tax Due Allowed for 2nd Installment, on/before Oct 15 <span class="italic">(50% or less of 23)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">27 Amount of Tax Payable/(Overpayment) <span class="italic">(25 less 26)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">28 Add: Penalties &ndash; 28A Surcharge</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">28B Interest</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">28C Compromise</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">28D Total Penalties <span class="italic">(Sum of 28A to 28C)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">29 Total Amount Payable/(Overpayment) <span class="italic">(Sum of 27 and 28D)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">30 Aggregate Amount Payable/(Overpayment) <span class="italic">(Sum of 29A and 29B)</span></td><td class="cell shaded" colspan="2"><span class="amt"></span></td></tr>
+    <tr>
+      <td class="cell" colspan="3">
+        <span class="label" style="display:inline;">31 If overpayment, mark up to two (2) boxes and indicate the amount, equivalent to Item 27 <span class="italic">(Once chosen, irrevocable)</span></span><br>
+        <label class="chk"><input type="checkbox" class="sq">To be refunded</label>
+        <label class="chk"><input type="checkbox" class="sq">To be issued a Tax Credit Certificate</label>
+        <label class="chk"><input type="checkbox" class="sq">To be carried over as tax credit for next year/quarter</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell" colspan="3" style="font-size:6.8px;">
+        <label class="chk"><input type="checkbox" class="sq"></label>
+        32 I hereby declare, under the penalties of Perjury, that all the information provided by me (as taxpayer/authorized representative) in this tax return,
+        which I filed electronically, are true, correct and complete pursuant to the provisions of the National Internal Revenue Code of 1997, as amended,
+        and the revenue regulations issued pursuant thereto. Also, I declare and fully understand that I will be held criminally, civilly and administratively
+        liable under existing laws, rules and regulations if any of the information/statement I submitted/supplied therein are false, misleading, deceptive
+        and inaccurate. Finally, I give my consent to the processing of my information as contemplated under Republic Act (RA) No. 10173, or the Data Privacy
+        Act of 2012, for legitimate and lawful purpose, adhering to the principle of proportionality. <span class="bold">Agree</span>
+        <span style="float:right;">35 Number of Attachments&nbsp;<span class="comb" data-len="2"></span></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="cell" style="width:60%;">33 Printed Name and Signature of Taxpayer/Authorized Representative<br><input type="text"></td>
+      <td class="cell" colspan="2">34 TIN of Authorized Representative<br><span class="comb" data-len="9" data-groups="3,3,3"></span></td>
+    </tr>
+  </table>
+
+  <div class="section-title center">PART III - Details of Payment</div>
+  <table class="grid">
+    <tr>
+      <td class="cell shaded bold" style="width:22%;">Particulars</td>
+      <td class="cell shaded bold" style="width:18%;">Drawee Bank/Agency</td>
+      <td class="cell shaded bold" style="width:18%;">Number</td>
+      <td class="cell shaded bold" style="width:17%;">Date (MM/DD/YYYY)</td>
+      <td class="cell shaded bold" style="width:25%;">Amount</td>
+    </tr>
+    <tr><td class="cell">36 Cash/Bank Debit Advice</td><td class="cell"><input type="text"></td><td class="cell"><input type="text"></td><td class="cell"><span class="comb" data-len="8" data-groups="2,2,4"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">37 Check</td><td class="cell"><input type="text"></td><td class="cell"><input type="text"></td><td class="cell"><span class="comb" data-len="8" data-groups="2,2,4"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">38 Tax Debit Memo</td><td class="cell"><input type="text"></td><td class="cell"><input type="text"></td><td class="cell"><span class="comb" data-len="8" data-groups="2,2,4"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">39 Others <span class="italic">(specify below)</span></td><td class="cell"><input type="text"></td><td class="cell"><input type="text"></td><td class="cell"><span class="comb" data-len="8" data-groups="2,2,4"></span></td><td class="cell"><span class="amt"></span></td></tr>
+  </table>
+  <table class="grid">
+    <tr>
+      <td class="cell" style="width:65%; height:36px;">Machine Validation/Revenue Official Receipt Details <span class="italic">(if not filed with an Authorized Agent Bank)</span></td>
+      <td class="cell center" style="width:35%;">Stamp of Receiving Office/AAB<br>and Date of Receipt<br><span class="italic">(RO's Signature/Bank Teller's Initial)</span></td>
+    </tr>
+  </table>
+  <div style="font-size:6.5px; margin-top:2px;">*NOTE: The BIR Data Privacy Policy is in the BIR website (www.bir.gov.ph)</div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page" id="page2">
+
+  <div class="top-strip" style="align-items:stretch;">
+    <div class="form-box">
+      <div style="font-size:7px;">BIR Form No.</div>
+      <div class="form-no">1701-MS</div>
+      <div style="font-size:6.5px;">August 2024</div>
+      <div style="font-size:6.5px;">Page 2</div>
+    </div>
+    <div class="main-title">
+      <h1 style="font-size:13px;">Annual Income Tax Return</h1>
+      <h2 style="font-size:9.5px;">For Individuals Classified as MICRO or SMALL Taxpayers</h2>
+    </div>
+    <div class="code-box">
+      <div style="font-size:14px; letter-spacing:1px;">||||||||||||</div>
+      1701-MS 08/24 P2
+    </div>
+  </div>
+
+  <table class="grid" style="margin-top:4px;">
+    <tr>
+      <td class="cell" style="width:45%;">
+        <span class="label">TIN</span>
+        <span class="comb" data-len="9" data-groups="3,3,3"></span>
+      </td>
+      <td class="cell" style="width:55%;">
+        <span class="label">Tax Filer's Last Name</span>
+        <input type="text">
+      </td>
+    </tr>
+  </table>
+
+  <div class="section-title">PART IV &ndash; Computation of Tax</div>
+  <table class="grid">
+    <tr><td class="cell shaded bold" colspan="3">A. Taxable Compensation Income
+      <span style="float:right; font-weight:400; font-style:italic; font-size:7px;">(DO NOT enter Centavos; 49 or less drop down; 50 or more round up)</span></td></tr>
+    <tr>
+      <td class="cell shaded bold" style="width:60%;">Particulars</td>
+      <td class="cell shaded bold center" style="width:20%;">A. Taxpayer/Filer</td>
+      <td class="cell shaded bold center" style="width:20%;">B. Spouse</td>
+    </tr>
+    <tr><td class="cell">1 Gross Compensation Income</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">2 Less: Non-Taxable / Exempt Compensation</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">3 Taxable Compensation Income <span class="italic">(1 less 2)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">4 Tax Due-Compensation Income <span class="italic">(3 x applicable rate from Table 2)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+
+    <tr><td class="cell shaded bold" colspan="3">B. Taxable Business Income <span class="italic" style="font-weight:400;">(If graduated/special/exempt, fill 5-18B; if 8%, fill 19-25)</span></td></tr>
+    <tr><td class="cell shaded bold" colspan="3">B1. For Graduated Income Tax Rates / Special or Preferential Rate / Exempt from IT</td></tr>
+    <tr><td class="cell">5 Sales/Revenues/Fees</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">6 Less: Sales Returns, Allowances and Discounts</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">7 Net Sales/Revenues/Fees <span class="italic">(5 less 6)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">8 Less: Cost of Sales/Services <span class="italic">(only if Itemized Deductions)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">9 Gross Income/(Loss) from Operation <span class="italic">(7 less 8)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">10 Less: Deductions Allowable under Existing Laws</td><td class="cell"></td><td class="cell"></td></tr>
+    <tr><td class="cell">&nbsp;&nbsp;10A Ordinary Allowable Itemized Deductions</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">&nbsp;&nbsp;10B Special Allowable Itemized Deductions</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">&nbsp;&nbsp;10C Net Operating Loss Carry Over (NOLCO)</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">&nbsp;&nbsp;10D Total Allowable Itemized Deductions <span class="italic">(Sum 10A-10C)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell center italic">OR</td><td class="cell"></td><td class="cell"></td></tr>
+    <tr><td class="cell">11 Optional Standard Deduction (OSD) <span class="italic">(40% of Item 7)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">12 Net Income/(Loss) <span class="italic">(Itemized: 9 less 10D; OSD: 9 less 11)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">13 Add: Other Non-Operating Income</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">14 Taxable Income-Business <span class="italic">(Sum 12 and 13)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">15 Total Taxable Income &ndash; Compensation &amp; Business <span class="italic">(Sum 3 and 14)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr>
+      <td class="cell">16 Tax Rate <span class="italic">(For Special/Preferential Rate or Exempt from IT)</span></td>
+      <td class="cell center"><input type="text" class="pct-cell" style="display:inline-block; width:40px;">%</td>
+      <td class="cell center"><input type="text" class="pct-cell" style="display:inline-block; width:40px;">%</td>
+    </tr>
+    <tr><td class="cell">17 Tax Due-Special/Preferential Rate or Exempt from Income Tax <span class="italic">(Exempt: 14x16; Special: 9x16)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">18A Total Tax Due-Comp &amp; Business Income <span class="italic">(special/exempt) (Sum 4,17) &rarr; Part II Item 19</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">18B Total Tax Due-Comp &amp; Business Income <span class="italic">(graduated) (15 x rate, Table 2) &rarr; Part II Item 22</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+
+    <tr><td class="cell shaded bold" colspan="3">B2. For 8% Income Tax Rate</td></tr>
+    <tr><td class="cell">19 Sales/Revenues/Fees <span class="italic">(net of returns, allowances, discounts)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">20 Add: Other Non-Operating Income</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">21 Total Income <span class="italic">(Sum 19,20)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">22 Less: Allowable reduction (P250,000) for purely self-employed/professionals <span class="italic">(n/a if with comp income)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">23 Taxable Income/(Loss) <span class="italic">(21 less 22)</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+    <tr><td class="cell">24 Tax Due - Business Income <span class="italic">(23 x 8%)</span></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">25 Total Tax Due-Comp &amp; Business Income <span class="italic">(8%) (Sum 4,24) &rarr; Part II Item 22</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+  </table>
+
+  <div class="section-title">PART V &ndash; Tax Credits/Payments <span style="font-weight:400; font-style:italic; font-size:7px;">(attach proof)</span></div>
+  <table class="grid">
+    <tr>
+      <td class="cell shaded bold" style="width:60%;">Particulars</td>
+      <td class="cell shaded bold center" style="width:20%;">A. Taxpayer/Filer</td>
+      <td class="cell shaded bold center" style="width:20%;">B. Spouse</td>
+    </tr>
+    <tr><td class="cell">1 Prior Year's Excess Credits</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">2 Tax Payments for the First Three (3) Quarters</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">3 Creditable Tax Withheld for the First Three (3) Quarters</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">4 Creditable Tax Withheld per BIR Form 2307 or 1606 for the 4th Quarter</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">5 Creditable Tax Withheld per BIR Form 2316</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">6 Tax Paid in Return Previously Filed, if this is an Amended Return</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">7 Foreign Tax Credits <span class="italic">(specify Foreign Tax Number, if applicable)</span> <input type="text" style="width:40%; display:inline-block;"></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">8 Special Tax Credits, if applicable</td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell">9 Other Tax Credits/Payments <span class="italic">(specify)</span> <input type="text" style="width:40%; display:inline-block;"></td><td class="cell"><span class="amt"></span></td><td class="cell"><span class="amt"></span></td></tr>
+    <tr><td class="cell bold">10 Total Tax Credits/Payments <span class="italic">(Sum 1-9) &rarr; Part II Item 24</span></td><td class="cell shaded"><span class="amt"></span></td><td class="cell shaded"><span class="amt"></span></td></tr>
+  </table>
+
+  <div class="section-title">PART VI &ndash; Tax Relief Availment <span style="font-weight:400; font-style:italic; font-size:7px;">(For Taxpayers with Special/Preferential or Exempt from Income Tax Only) (For BIR Use Only)</span></div>
+  <table class="grid">
+    <tr>
+      <td class="cell" style="width:60%;">1 Total Tax Relief Availment <span class="italic">[(Sum of Items 10B and 14 of Part IV x Applicable Rate from Table 2) Less Item 17 of Part IV; Add Item 8 of Part V]</span></td>
+      <td class="cell" style="width:20%;"><span class="amt"></span></td>
+      <td class="cell" style="width:20%;"><span class="amt"></span></td>
+    </tr>
+  </table>
+
+  <table class="grid" style="margin-top:6px;">
+    <tr><td class="cell shaded bold center" colspan="4">TABLE 1 &ndash; Alphanumeric Tax Codes (ATCs)</td></tr>
+    <tr>
+      <td class="cell" style="width:25%;">II012 Business Income&ndash;Graduated IT Rates</td>
+      <td class="cell" style="width:25%;">II014 Income from Profession&ndash;Graduated IT Rates</td>
+      <td class="cell" style="width:25%;">II013 Mixed Income&ndash;Graduated IT Rates</td>
+      <td class="cell" style="width:25%;">II011 Compensation Income</td>
+    </tr>
+    <tr>
+      <td class="cell">II015 Business Income&ndash;8% IT Rate</td>
+      <td class="cell">II017 Income from Profession&ndash;8% IT Rate</td>
+      <td class="cell">II016 Mixed Income&ndash;8% IT Rate</td>
+      <td class="cell">&nbsp;</td>
+    </tr>
+  </table>
+
+  <div style="display:flex; gap:4px; margin-top:6px;">
+    <table class="grid" style="width:50%;">
+      <tr><td class="cell shaded bold center" colspan="2">TABLE 2 &ndash; Tax Rates <span class="italic" style="font-weight:400;">(effective Jan 1, 2023 onwards)</span></td></tr>
+      <tr><td class="cell bold">If Taxable Income is:</td><td class="cell bold">Tax Due is:</td></tr>
+      <tr><td class="cell">Not over P 250,000</td><td class="cell">0%</td></tr>
+      <tr><td class="cell">Over P 250,000 but not over P 400,000</td><td class="cell">15% of the excess over P 250,000</td></tr>
+      <tr><td class="cell">Over P 400,000 but not over P 800,000</td><td class="cell">P 22,500 + 20% of the excess over P 400,000</td></tr>
+    </table>
+    <table class="grid" style="width:50%;">
+      <tr><td class="cell shaded bold center" colspan="2">Continuation of Table 2</td></tr>
+      <tr><td class="cell bold">If Taxable Income is:</td><td class="cell bold">Tax Due is:</td></tr>
+      <tr><td class="cell">Over P 800,000 but not over P 2,000,000</td><td class="cell">P 102,500 + 25% of the excess over P 800,000</td></tr>
+      <tr><td class="cell">Over P 2,000,000 but not over P 8,000,000</td><td class="cell">P 402,500 + 30% of the excess over P 2,000,000</td></tr>
+      <tr><td class="cell">Over P 8,000,000</td><td class="cell">P 2,202,500 + 35% of the excess over P 8,000,000</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="no-print" style="text-align:center; margin-bottom:30px;">
+  <button onclick="window.print()" style="padding:8px 20px; font-size:13px; cursor:pointer;">Print / Save as PDF</button>
+</div>
+
+<script>
+  function makeComb(container, length, groups) {
+    groups.forEach((g, gi) => {
+      for (let i = 0; i < g; i++) {
+        const inp = document.createElement('input');
+        inp.type = 'text';
+        inp.maxLength = 1;
+        inp.className = 'comb-cell';
+        inp.addEventListener('input', function () {
+          if (this.value && this.nextElementSibling) {
+            let next = this.parentElement.querySelectorAll('input')[
+              Array.from(this.parentElement.querySelectorAll('input')).indexOf(this) + 1
+            ];
+            if (next) next.focus();
+          }
+        });
+        container.appendChild(inp);
+      }
+      if (gi < groups.length - 1) {
+        const sep = document.createElement('span');
+        sep.className = 'comb-sep';
+        sep.textContent = '-';
+        container.appendChild(sep);
+      }
+    });
+  }
+
+  function makeAmount(container) {
+    makeComb(container, 7, [7]);
+    const dot = document.createElement('span');
+    dot.className = 'amt-dot';
+    dot.textContent = '.';
+    container.appendChild(dot);
+    makeComb(container, 2, [2]);
+  }
+
+  document.querySelectorAll('.comb').forEach(el => {
+    const len = Number(el.dataset.len);
+    const groups = el.dataset.groups ? el.dataset.groups.split(',').map(Number) : [len];
+    makeComb(el, len, groups);
+  });
+  document.querySelectorAll('.amt').forEach(el => makeAmount(el));
+</script>
+
+</body>
+</html>
